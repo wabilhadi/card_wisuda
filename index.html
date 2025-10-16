@@ -1,398 +1,680 @@
 <!doctype html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Selamat Wisuda, Ataa 🌸</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Selamat Wisuda, Ataa 🌸</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
-  <style>
-    :root{
-      --pink:#ffbfd6;
-      --soft-pink:#ffdced;
-      --purple:#8e6fb7;
-      --light-blue:#bfe9ff;
-      --card-bg:rgba(255,255,255,0.92);
-      --glass: rgba(255,255,255,0.26);
-      --radius:18px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Poppins,system-ui,Arial; background: linear-gradient(180deg,var(--soft-pink), #f7f0ff 40%, #eef9ff 100%); -webkit-font-smoothing:antialiased;}
+    <style>
+        :root {
+            --pink: #ffbfd6;
+            --soft-pink: #ffdced;
+            --purple: #8e6fb7;
+            --light-blue: #bfe9ff;
+            --dark-purple: #5a2d6b;
+            --text-color: #4a2f5a;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --glass: rgba(255, 255, 255, 0.3);
+            --radius: 18px;
+        }
 
-    /* watercolor floral backdrop (svg-like) */
-    .watercolor{position:fixed; inset:0; pointer-events:none; z-index:0;}
-    .container{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;padding:24px;z-index:2}
+        * {
+            box-sizing: border-box;
+        }
 
-    /* Card layout */
-    .card{width:100%;max-width:980px;background:var(--card-bg);border-radius:24px;box-shadow:0 10px 30px rgba(120,80,140,0.12);padding:28px;backdrop-filter: blur(6px);}
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Poppins', system-ui, Arial;
+            background: linear-gradient(180deg, var(--soft-pink), #f7f0ff 40%, #eef9ff 100%);
+            -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
+        }
 
-    header{display:flex;gap:16px;align-items:center}
-    .logo{display:flex;align-items:center;gap:10px}
-    .logo .badge{width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,var(--purple),var(--pink));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-family:'Great Vibes',cursive;font-size:24px}
-    h1{margin:0;font-size:20px;color:#5a2d6b}
+        .watercolor {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
 
-    /* Landing */
-    .landing{display:grid;grid-template-columns:1fr;gap:18px;padding:30px}
-    .input-row{display:flex;gap:12px;align-items:center}
-    input[type=text]{flex:1;padding:14px 16px;border-radius:12px;border:1px solid rgba(120,100,150,0.12);font-size:16px}
-    .btn{background:linear-gradient(90deg,var(--purple),var(--pink));color:white;padding:12px 18px;border-radius:12px;border:0;font-weight:600;cursor:pointer}
-    .muted{color:#6a4b7f;font-size:14px}
+        .container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 24px;
+            z-index: 2;
+        }
 
-    /* Home */
-    .home{display:none;padding:20px;align-items:center;justify-content:center}
-    .greeting{display:flex;gap:20px;flex-direction:column;align-items:center;text-align:center;padding:20px}
-    .greeting h2{font-family:'Great Vibes',cursive;font-size:44px;margin:0;color:var(--purple)}
-    .poem{max-width:760px;color:#4a2f5a;font-size:18px;line-height:1.6}
+        .card {
+            width: 100%;
+            max-width: 980px;
+            background: var(--card-bg);
+            border-radius: 28px;
+            box-shadow: 0 4px 15px rgba(142, 111, 183, 0.08), 0 10px 40px rgba(142, 111, 183, 0.12);
+            padding: 40px;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
 
-    /* Controls */
-    .controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center;margin-top:12px}
+        header {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 16px;
+        }
 
-    /* Upload / Preview */
-    .uploader{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center;margin-top:18px}
-    .thumb{width:160px;height:160px;border-radius:14px;overflow:hidden;background:linear-gradient(180deg,var(--light-blue),var(--soft-pink));display:flex;align-items:center;justify-content:center;border:1px dashed rgba(120,80,140,0.12)}
-    .thumb img{width:100%;height:100%;object-fit:cover}
+        .logo .badge {
+            width: 58px;
+            height: 58px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-family: 'Great Vibes', cursive;
+            font-size: 28px;
+        }
 
-    /* downloadable card modal */
-    .card-preview{margin-top:18px;display:flex;gap:18px;flex-direction:column;align-items:center}
-    .download-btn{background:linear-gradient(90deg,#ff8fc0,#9b7adf);border:0;padding:12px 16px;border-radius:12px;color:white;font-weight:600;cursor:pointer}
+        h1 {
+            margin: 0;
+            font-size: 22px;
+            color: var(--dark-purple);
+            font-weight: 600;
+        }
 
-    /* footer */
-    footer{margin-top:18px;text-align:center;color:#6a4b7f}
+        .view {
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .view.hidden {
+            opacity: 0;
+            transform: translateY(10px);
+            pointer-events: none;
+            position: absolute;
+        }
 
-    /* small screens */
-    @media (max-width:600px){.greeting h2{font-size:32px}.thumb{width:120px;height:120px}}
+        .landing {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            padding: 30px 10px;
+        }
 
-    /* Confetti canvas sits on top z-index:1 */
-    #confetti{position:fixed;inset:0;pointer-events:none;z-index:1}
+        .input-row {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+        }
 
-    /* Simple fade/slide animations */
-    .fade-in{animation:fade .9s ease both}
-    @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+        input[type=text] {
+            flex: 1;
+            padding: 16px 18px;
+            border-radius: 14px;
+            border: 1px solid rgba(142, 111, 183, 0.2);
+            font-size: 16px;
+            background: rgba(240, 235, 255, 0.5);
+            transition: all 0.3s ease;
+            color: var(--dark-purple);
+        }
+        input[type=text]::placeholder {
+            color: rgba(90, 45, 107, 0.5);
+        }
+        input[type=text]:focus {
+            outline: none;
+            border-color: var(--purple);
+            box-shadow: 0 0 0 4px rgba(142, 111, 183, 0.1);
+        }
+        
+        .btn {
+            background: linear-gradient(90deg, var(--purple), var(--pink));
+            color: white;
+            padding: 14px 24px;
+            border-radius: 14px;
+            border: 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(142, 111, 183, 0.2);
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(142, 111, 183, 0.3);
+        }
 
-    /* small music control */
-    .audio-controls{display:flex;gap:8px;align-items:center;background:var(--glass);padding:8px;border-radius:12px}
+        .muted {
+            color: #6a4b7f;
+            font-size: 14px;
+        }
 
-  </style>
+        .home {
+            display: flex;
+            padding: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .greeting {
+            display: flex;
+            gap: 24px;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .greeting h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 64px;
+            margin: 0;
+            color: var(--purple);
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
+
+        .poem {
+            max-width: 760px;
+            color: var(--text-color);
+            font-size: 19px;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .controls {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .audio-controls, .uploader {
+            background: var(--glass);
+            padding: 12px 16px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .uploader {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 18px;
+        }
+        
+        .thumb {
+            width: 160px;
+            height: 160px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: linear-gradient(180deg, var(--light-blue), var(--soft-pink));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed rgba(142, 111, 183, 0.3);
+            transition: transform 0.3s ease;
+        }
+        .thumb:hover {
+            transform: scale(1.05);
+        }
+        .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-preview {
+            margin-top: 18px;
+            display: flex;
+            gap: 18px;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .download-btn {
+            background: linear-gradient(90deg, #ff8fc0, #9b7adf);
+            border: 0;
+            padding: 14px 24px;
+            border-radius: 14px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(142, 111, 183, 0.2);
+        }
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(142, 111, 183, 0.3);
+        }
+        
+        .btn.secondary {
+            background: transparent;
+            border: 1px solid rgba(120, 80, 140, 0.2);
+            color: var(--purple);
+            box-shadow: none;
+        }
+        .btn.secondary:hover {
+            background: rgba(142, 111, 183, 0.08);
+            border-color: rgba(120, 80, 140, 0.3);
+            transform: translateY(-2px);
+            box-shadow: none;
+        }
+
+        footer {
+            margin-top: 24px;
+            text-align: center;
+            color: #6a4b7f;
+        }
+
+        @media (max-width: 600px) {
+            .card { padding: 24px; }
+            .greeting h2 { font-size: 48px; }
+            .poem { font-size: 17px; }
+            .thumb { width: 120px; height: 120px; }
+        }
+
+        #confetti {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+    </style>
 </head>
 <body>
 
-  <!-- watercolor SVG (decorative) -->
-  <svg class="watercolor" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
-    <defs>
-      <linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#ffe0f4"/><stop offset="1" stop-color="#efedff"/></linearGradient>
-    </defs>
-    <g opacity="0.35">
-      <ellipse cx="100" cy="120" rx="220" ry="120" fill="#f9e6ff"/>
-      <ellipse cx="1100" cy="680" rx="420" ry="220" fill="#e7f6ff"/>
-      <ellipse cx="950" cy="120" rx="260" ry="160" fill="#ffeaf2"/>
-    </g>
-    <!-- floral watercolor blobs -->
-    <g opacity="0.28">
-      <circle cx="160" cy="220" r="120" fill="#eed4ff"/>
-      <circle cx="360" cy="80" r="90" fill="#ffd9ec"/>
-      <circle cx="860" cy="420" r="160" fill="#dfe9ff"/>
-    </g>
-  </svg>
+    <svg class="watercolor" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+        <defs>
+            <linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#ffe0f4"/><stop offset="1" stop-color="#efedff"/></linearGradient>
+        </defs>
+        <g opacity="0.35">
+            <ellipse cx="100" cy="120" rx="220" ry="120" fill="#f9e6ff"/>
+            <ellipse cx="1100" cy="680" rx="420" ry="220" fill="#e7f6ff"/>
+            <ellipse cx="950" cy="120" rx="260" ry="160" fill="#ffeaf2"/>
+        </g>
+        <g opacity="0.28">
+            <circle cx="160" cy="220" r="120" fill="#eed4ff"/>
+            <circle cx="360" cy="80" r="90" fill="#ffd9ec"/>
+            <circle cx="860" cy="420" r="160" fill="#dfe9ff"/>
+        </g>
+    </svg>
 
-  <canvas id="confetti"></canvas>
+    <canvas id="confetti"></canvas>
 
-  <div class="container">
-    <div class="card">
-      <header>
-        <div class="logo">
-          <div class="badge">A</div>
-          <div>
-            <h1>Selamat Wisuda, Ataa</h1>
-            <div class="muted">Sebuah halaman ucapan personal yang manis & dreamy</div>
-          </div>
+    <div class="container">
+        <div class="card">
+            <header>
+                <div class="logo">
+                    <div class="badge">A</div>
+                    <div>
+                        <h1>Selamat Wisuda, Ataa</h1>
+                        <div class="muted">Sebuah halaman ucapan personal yang manis & dreamy</div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="view landing" id="landing">
+                <p style="font-size:16px;color:#5c3b77">Halo! Buat halaman ucapan personal untuk Ataa. Masukkan nama (atau biarkan 'Ataa') dan klik masuk.</p>
+                <div class="input-row">
+                    <input id="nameInput" type="text" placeholder="Tulis nama... (contoh: Ataa)" value="Ataa" />
+                    <button class="btn" id="enterBtn">Masuk</button>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+                    <div class="muted">Warna tema: Ungu • Pink • Biru muda • Watercolor • Bunga</div>
+                    <div style="margin-left:auto" class="muted">Durasi preview 30 detik • Responsif HP</div>
+                </div>
+            </main>
+
+            <section class="view home hidden" id="home">
+                <div class="greeting">
+                    <h2 id="heroName">Untuk: Ataa</h2>
+                    <div class="poem" id="poem"></div>
+                    <div class="controls">
+                        <div class="audio-controls">
+                            <button id="playAudio" class="btn" style="padding:8px 12px;">Play</button>
+                            <label style="font-size:13px;color:#5b3b7a">Pilih lagu (opsional)</label>
+                            <input id="audioFile" type="file" accept="audio/*" style="display:inline-block" />
+                        </div>
+                        <div>
+                            <button id="backBtn" class="btn secondary">Kembali</button>
+                        </div>
+                    </div>
+                    <div class="uploader">
+                        <label class="muted">Unggah foto untuk dibuat jadi kartu ucapan:</label>
+                        <input id="photoFile" type="file" accept="image/*" />
+                        <div class="thumb" id="thumb">Preview</div>
+                    </div>
+                    <div class="card-preview">
+                        <canvas id="cardCanvas" width="1200" height="700" style="max-width:100%;border-radius:12px;box-shadow:0 10px 30px rgba(100,60,120,0.08);"></canvas>
+                        <div style="display:flex;gap:10px;align-items:center">
+                            <button id="downloadJpg" class="download-btn">Download sebagai JPG</button>
+                            <button id="resetPic" class="btn secondary">Reset Foto</button>
+                        </div>
+                    </div>
+                </div>
+                <footer>
+                    <small>Made with love ✨ — Customize colors, text, atau musik lewat kontrol di atas.</small>
+                </footer>
+            </section>
         </div>
-      </header>
-
-      <!-- Landing -->
-      <main class="landing fade-in" id="landing">
-        <p style="font-size:16px;color:#5c3b77">Halo! Buat halaman ucapan personal untuk Ataa. Masukkan nama (atau biarkan 'Ataa') dan klik masuk.</p>
-        <div class="input-row">
-          <input id="nameInput" type="text" placeholder="Tulis nama... (contoh: Ataa)" value="Ataa" />
-          <button class="btn" id="enterBtn">Masuk</button>
-        </div>
-
-        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
-          <div class="muted">Warna tema: Ungu • Pink • Biru muda • Watercolor • Bunga</div>
-          <div style="margin-left:auto" class="muted">Durasi preview 30 detik • Responsif HP</div>
-        </div>
-      </main>
-
-      <!-- Home -->
-      <section class="home" id="home">
-        <div class="greeting">
-          <h2 id="heroName">Untuk: Ataa</h2>
-
-          <div class="poem" id="poem">
-            <!-- dynamic poem --></div>
-
-          <div class="controls">
-            <div class="audio-controls">
-              <button id="playAudio" class="btn" style="padding:8px 12px;">Play</button>
-              <label style="font-size:13px;color:#5b3b7a">Pilih lagu (opsional)</label>
-              <input id="audioFile" type="file" accept="audio/*" style="display:inline-block" />
-            </div>
-
-            <div>
-              <button id="backBtn" class="btn" style="background:transparent;border:1px solid rgba(120,80,140,0.12);color:var(--purple);">Kembali</button>
-            </div>
-          </div>
-
-          <div class="uploader">
-            <label class="muted">Unggah foto untuk dibuat jadi kartu ucapan:</label>
-            <input id="photoFile" type="file" accept="image/*" />
-            <div class="thumb" id="thumb">Preview</div>
-          </div>
-
-          <div class="card-preview">
-            <canvas id="cardCanvas" width="1200" height="700" style="max-width:100%;border-radius:12px;box-shadow:0 10px 30px rgba(100,60,120,0.08);"></canvas>
-            <div style="display:flex;gap:10px;align-items:center">
-              <button id="downloadJpg" class="download-btn">Download sebagai JPG</button>
-              <button id="resetPic" class="btn" style="background:transparent;border:1px solid rgba(120,80,140,0.12);color:var(--purple);">Reset Foto</button>
-            </div>
-          </div>
-        </div>
-
-        <footer>
-          <small>Made with love ✨ — Customize colors, text, atau musik lewat kontrol di atas.</small>
-        </footer>
-      </section>
-
     </div>
-  </div>
 
-  <!-- Hidden audio element -->
-  <audio id="bgAudio" loop></audio>
+    <audio id="bgAudio" loop></audio>
 
-  <script>
-    // ---------- Simple routing ----------
-    const landing = document.getElementById('landing');
-    const home = document.getElementById('home');
-    const nameInput = document.getElementById('nameInput');
-    const enterBtn = document.getElementById('enterBtn');
-    const heroName = document.getElementById('heroName');
-    const poemEl = document.getElementById('poem');
-    const bgAudio = document.getElementById('bgAudio');
-    const playAudio = document.getElementById('playAudio');
-    const audioFile = document.getElementById('audioFile');
+    <script>
+        // DOM Elements
+        const landing = document.getElementById('landing');
+        const home = document.getElementById('home');
+        const nameInput = document.getElementById('nameInput');
+        const enterBtn = document.getElementById('enterBtn');
+        const heroName = document.getElementById('heroName');
+        const poemEl = document.getElementById('poem');
+        const bgAudio = document.getElementById('bgAudio');
+        const playAudio = document.getElementById('playAudio');
+        const audioFile = document.getElementById('audioFile');
+        const photoFile = document.getElementById('photoFile');
+        const thumb = document.getElementById('thumb');
+        const cardCanvas = document.getElementById('cardCanvas');
+        const ctx = cardCanvas.getContext('2d');
+        let uploadedImage = null;
 
-    // default poem text
-    const poemTemplate = name => `\n\nSelamat wisuda, ${name} 💐\n\nHari ini bukan sekadar akhir perjalanan,\ntapi awal dari mimpi-mimpi yang mulai terbang lebih tinggi.\n\nLangit tersenyum melihat langkahmu,\ndan setiap bunga bermekaran memanggil namamu dengan bangga.\n\nSemoga setiap langkahmu selalu dihiasi keberanian,\ncinta, dan kebahagiaan yang tak berujung.\n\nDunia menunggu sinar terbaik darimu,\ndan hari ini — semuanya dimulai dari senyum cantikmu. 💫\n`;
+        // Default poem text
+        const poemTemplate = name => `Selamat wisuda, ${name} 💐\n\nHari ini bukan sekadar akhir perjalanan,\ntapi awal dari mimpi-mimpi yang mulai terbang lebih tinggi.\n\nLangit tersenyum melihat langkahmu,\ndan setiap bunga bermekaran memanggil namamu dengan bangga.\n\nSemoga setiap langkahmu selalu dihiasi keberanian,\ncinta, dan kebahagiaan yang tak berujung.\n\nDunia menunggu sinar terbaik darimu,\ndan hari ini — semuanya dimulai dari senyum cantikmu. 💫`;
 
-    function showHome(name){
-      landing.style.display='none';
-      home.style.display='flex';
-      heroName.textContent = `Untuk: ${name}`;
-      typePoem(poemTemplate(name));
-      startConfetti();
-    }
-
-    enterBtn.addEventListener('click', ()=>{
-      const name = nameInput.value.trim() || 'Ataa';
-      showHome(name);
-    });
-
-    document.getElementById('backBtn').addEventListener('click', ()=>{
-      home.style.display='none'; landing.style.display='grid'; stopConfetti();
-    });
-
-    // typing effect
-    function typePoem(text){
-      poemEl.textContent='';
-      let i=0;
-      const speed=16;
-      function step(){
-        if(i<text.length){
-          poemEl.textContent += text.charAt(i);
-          i++;
-          setTimeout(step,speed);
+        // Routing with smooth transitions
+        function showHome(name) {
+            landing.classList.add('hidden');
+            setTimeout(() => {
+                landing.style.display = 'none';
+                home.style.display = 'flex';
+                setTimeout(() => {
+                    home.classList.remove('hidden');
+                }, 50);
+            }, 600);
+            heroName.textContent = `Untuk: ${name}`;
+            typePoem(poemTemplate(name));
+            startConfetti();
+            drawCard(name);
         }
-      }
-      step();
-    }
 
-    // ---------- Audio handling ----------
-    let audioLoaded=false;
-    audioFile.addEventListener('change', (e)=>{
-      const f = e.target.files[0];
-      if(!f) return;
-      const url = URL.createObjectURL(f);
-      bgAudio.src = url;
-      audioLoaded=true;
-      bgAudio.play().catch(()=>{});
-      playAudio.textContent='Pause';
-    });
+        enterBtn.addEventListener('click', () => {
+            const name = nameInput.value.trim() || 'Ataa';
+            showHome(name);
+        });
 
-    playAudio.addEventListener('click', async ()=>{
-      if(bgAudio.paused){
-        try{ await bgAudio.play(); playAudio.textContent='Pause'; }catch(e){ console.log('autoplay blocked'); }
-      }else{ bgAudio.pause(); playAudio.textContent='Play'; }
-    });
+        document.getElementById('backBtn').addEventListener('click', () => {
+            home.classList.add('hidden');
+            setTimeout(() => {
+                home.style.display = 'none';
+                landing.style.display = 'grid';
+                setTimeout(() => {
+                    landing.classList.remove('hidden');
+                }, 50);
+            }, 600);
+            stopConfetti();
+            bgAudio.pause();
+            playAudio.textContent = 'Play';
+        });
 
-    // ---------- Photo upload & card canvas ----------
-    const photoFile = document.getElementById('photoFile');
-    const thumb = document.getElementById('thumb');
-    const cardCanvas = document.getElementById('cardCanvas');
-    const ctx = cardCanvas.getContext('2d');
-    let uploadedImage = null;
+        // Typing effect for the poem
+        function typePoem(text) {
+            poemEl.textContent = '';
+            let i = 0;
+            const speed = 16;
+            function step() {
+                if (i < text.length) {
+                    poemEl.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(step, speed);
+                }
+            }
+            step();
+        }
 
-    // draw initial empty card
-    function drawCard(name){
-      // background watercolor
-      const w = cardCanvas.width; const h = cardCanvas.height;
-      ctx.clearRect(0,0,w,h);
-      const grad = ctx.createLinearGradient(0,0,w,h);
-      grad.addColorStop(0,'#fff8ff');
-      grad.addColorStop(0.5,'#f6f1ff');
-      grad.addColorStop(1,'#eef9ff');
-      ctx.fillStyle = grad;
-      roundRect(ctx,0,0,w,h,24);
-      ctx.fill();
-      
-      // floral accent (simple)
-      ctx.fillStyle = 'rgba(155,122,223,0.12)';
-      ctx.beginPath(); ctx.ellipse(w-160,120,220,80,0,0,Math.PI*2); ctx.fill();
-      ctx.fillStyle = 'rgba(255,200,230,0.12)'; ctx.beginPath(); ctx.ellipse(120,h-120,200,90,0,0,Math.PI*2); ctx.fill();
+        // Audio handling
+        audioFile.addEventListener('change', (e) => {
+            const f = e.target.files[0];
+            if (!f) return;
+            const url = URL.createObjectURL(f);
+            bgAudio.src = url;
+            bgAudio.play().catch(() => {});
+            playAudio.textContent = 'Pause';
+        });
 
-      // place image if available
-      if(uploadedImage){
-        const imgW = Math.min(520, w*0.45);
-        const imgH = imgW * (uploadedImage.height/uploadedImage.width);
-        const imgX = 80; const imgY = (h - imgH)/2;
-        // rounded clip
-        roundClip(ctx,imgX,imgY,imgW,imgH,18);
-        ctx.drawImage(uploadedImage, imgX, imgY, imgW, imgH);
-        ctx.restore();
-      }
+        playAudio.addEventListener('click', async () => {
+            if (bgAudio.paused) {
+                try {
+                    await bgAudio.play();
+                    playAudio.textContent = 'Pause';
+                } catch (e) {
+                    console.log('Autoplay blocked');
+                }
+            } else {
+                bgAudio.pause();
+                playAudio.textContent = 'Play';
+            }
+        });
 
-      // text area
-      ctx.fillStyle = 'rgba(80,45,120,0.92)';
-      ctx.font = '38px "Great Vibes", cursive';
-      ctx.fillText(`Untuk: ${ (nameInput.value.trim() || 'Ataa') }`, uploadedImage? 640:120, 160);
+        // Photo upload & card canvas drawing
+        function drawCard(name) {
+            const w = cardCanvas.width;
+            const h = cardCanvas.height;
+            ctx.clearRect(0, 0, w, h);
 
-      ctx.font = '20px Poppins, sans-serif';
-      wrapText(ctx, getShortPoem((nameInput.value.trim()||'Ataa')), uploadedImage?640:120, 220, 440, 30);
+            const grad = ctx.createLinearGradient(0, 0, w, h);
+            grad.addColorStop(0, '#fff9ff');
+            grad.addColorStop(0.5, '#f8f4ff');
+            grad.addColorStop(1, '#f4faff');
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, w, h);
 
-      // small footer
-      ctx.fillStyle = 'rgba(90,50,120,0.6)';
-      ctx.font = '16px Poppins, sans-serif';
-      ctx.fillText('Selamat Wisuda • Dibuat dengan cinta', w-360, h-40);
-    }
+            ctx.save();
+            ctx.globalAlpha = 0.5;
+            ctx.fillStyle = 'rgba(155,122,223,0.18)';
+            ctx.beginPath();
+            ctx.ellipse(w - 200, 150, 300, 150, Math.PI / 4, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = 'rgba(255,200,230,0.2)';
+            ctx.beginPath();
+            ctx.ellipse(180, h - 150, 320, 160, -Math.PI / 6, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
 
-    function getShortPoem(name){
-      return `Hari ini bukan akhir, tapi awal dari mimpi yang mulai terbang.\nLangit tersenyum melihat langkahmu, ${name}.\nSemoga langkahmu selalu dihiasi keberanian dan cinta.`;
-    }
+            let textX = w / 2;
+            let textAlign = 'center';
 
-    // draw placeholder
-    drawCard('Ataa');
+            if (uploadedImage) {
+                const imgMaxW = w * 0.4;
+                const imgMaxH = h * 0.75;
+                let imgW = uploadedImage.width;
+                let imgH = uploadedImage.height;
 
-    photoFile.addEventListener('change', (e)=>{
-      const f = e.target.files[0];
-      if(!f) return;
-      const reader = new FileReader();
-      reader.onload = function(ev){
-        const img = new Image();
-        img.onload = ()=>{
-          uploadedImage = img;
-          // preview thumb
-          thumb.innerHTML = '';
-          const timg = document.createElement('img'); timg.src = ev.target.result; thumb.appendChild(timg);
-          drawCard(nameInput.value.trim() || 'Ataa');
-        };
-        img.src = ev.target.result;
-      };
-      reader.readAsDataURL(f);
-    });
+                if (imgW > imgMaxW || imgH > imgMaxH) {
+                    const ratio = Math.min(imgMaxW / imgW, imgMaxH / imgH);
+                    imgW *= ratio;
+                    imgH *= ratio;
+                }
+                const imgX = 100;
+                const imgY = (h - imgH) / 2;
+                
+                ctx.save();
+                ctx.shadowColor = 'rgba(142, 111, 183, 0.2)';
+                ctx.shadowBlur = 25;
+                ctx.shadowOffsetX = 5;
+                ctx.shadowOffsetY = 10;
+                roundClip(ctx, imgX, imgY, imgW, imgH, 24);
+                ctx.drawImage(uploadedImage, imgX, imgY, imgW, imgH);
+                ctx.restore();
+                
+                textX = imgX + imgW + 80;
+                textAlign = 'left';
+            }
 
-    document.getElementById('resetPic').addEventListener('click', ()=>{
-      uploadedImage = null; thumb.innerHTML = 'Preview'; drawCard(nameInput.value.trim() || 'Ataa');
-    });
+            ctx.textAlign = textAlign;
+            ctx.fillStyle = '#5a2d6b'; // var(--dark-purple)
+            ctx.font = `64px "Great Vibes", cursive`;
+            const titleY = uploadedImage ? h * 0.35 : h * 0.4;
+            ctx.fillText(`Untuk ${name},`, textX, titleY);
 
-    document.getElementById('downloadJpg').addEventListener('click', ()=>{
-      // redraw at high resolution, then download
-      const tmpCanvas = document.createElement('canvas');
-      tmpCanvas.width = 1800; tmpCanvas.height = 1050; // large
-      const tctx = tmpCanvas.getContext('2d');
-      // scale factor
-      const sx = tmpCanvas.width / cardCanvas.width;
-      tctx.scale(sx,sx);
-      // draw using our draw function but temporarily swap contexts
-      // easiest: draw the visible canvas into tmp
-      tctx.drawImage(cardCanvas,0,0);
-      const link = document.createElement('a');
-      link.href = tmpCanvas.toDataURL('image/jpeg',0.92);
-      link.download = `${(nameInput.value.trim()||'Ataa')}_wisuda_card.jpg`;
-      link.click();
-    });
+            ctx.fillStyle = '#4a2f5a'; // var(--text-color)
+            ctx.font = '24px Poppins';
+            const poemMaxWidth = uploadedImage ? w - textX - 80 : 600;
+            wrapText(ctx, getShortPoem(name), textX, titleY + 70, poemMaxWidth, 40);
+            
+            ctx.fillStyle = 'rgba(90, 50, 120, 0.6)';
+            ctx.font = '18px Poppins';
+            ctx.textAlign = 'center';
+            ctx.fillText('✨ Selamat Atas Kelulusanmu ✨', w / 2, h - 50);
+        }
 
-    // utility functions for canvas drawing
-    function roundRect(ctx,x,y,w,h,r){ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
-    function roundClip(ctx,x,y,w,h,r){ ctx.save(); ctx.beginPath(); roundRect(ctx,x,y,w,h,r); ctx.clip(); }
-    function wrapText(ctx, text, x, y, maxWidth, lineHeight){ const words = text.split(' '); let line=''; for(let n=0;n<words.length;n++){ const testLine = line + words[n] + ' '; const metrics = ctx.measureText(testLine); const testWidth = metrics.width; if(testWidth>maxWidth && n>0){ ctx.fillText(line, x, y); line = words[n] + ' '; y += lineHeight; }else{ line = testLine; } } ctx.fillText(line, x, y); }
+        function getShortPoem(name) {
+            return `Hari ini bukan akhir, tapi awal dari mimpi yang mulai terbang. Langit tersenyum melihat langkahmu, ${name}. Semoga langkahmu selalu dihiasi keberanian dan cinta.`;
+        }
 
-    // ---------- Confetti Ribbons (simple canvas particles) ----------
-    const confettiCanvas = document.getElementById('confetti');
-    const confettiCtx = confettiCanvas.getContext('2d');
-    let confettiParticles = [];
-    let confettiRunning = false;
+        drawCard('Ataa');
 
-    function resizeConfetti(){ confettiCanvas.width = innerWidth; confettiCanvas.height = innerHeight; }
-    addEventListener('resize', resizeConfetti); resizeConfetti();
+        photoFile.addEventListener('change', (e) => {
+            const f = e.target.files[0];
+            if (!f) return;
+            const reader = new FileReader();
+            reader.onload = function(ev) {
+                const img = new Image();
+                img.onload = () => {
+                    uploadedImage = img;
+                    thumb.innerHTML = '';
+                    const timg = document.createElement('img');
+                    timg.src = ev.target.result;
+                    thumb.appendChild(timg);
+                    drawCard(nameInput.value.trim() || 'Ataa');
+                };
+                img.src = ev.target.result;
+            };
+            reader.readAsDataURL(f);
+        });
+        
+        nameInput.addEventListener('input', () => {
+            drawCard(nameInput.value.trim() || 'Ataa');
+        });
 
-    function rand(min,max){return Math.random()*(max-min)+min}
-    function spawnParticle(){
-      const w = rand(8,22); const h = rand(14,36);
-      confettiParticles.push({
-        x: rand(0,confettiCanvas.width),
-        y: -50,
-        vx: rand(-0.6,0.6),
-        vy: rand(1.2,2.5),
-        r: rand(0,Math.PI*2),
-        vr: rand(-0.04,0.04),
-        w, h,
-        color: ['#9b7adf','#ff8fc0','#bfe9ff','#f9d7ff'][Math.floor(rand(0,4))],
-        time:0
-      });
-    }
+        document.getElementById('resetPic').addEventListener('click', () => {
+            uploadedImage = null;
+            thumb.innerHTML = 'Preview';
+            photoFile.value = ''; // Reset input file
+            drawCard(nameInput.value.trim() || 'Ataa');
+        });
 
-    function drawParticles(){
-      confettiCtx.clearRect(0,0,confettiCanvas.width,confettiCanvas.height);
-      for(let i=confettiParticles.length-1;i>=0;i--){
-        const p = confettiParticles[i];
-        p.time += 1;
-        p.x += p.vx; p.y += p.vy; p.r += p.vr;
-        // tilt effect
-        confettiCtx.save();
-        confettiCtx.translate(p.x,p.y);
-        confettiCtx.rotate(p.r);
-        confettiCtx.fillStyle = p.color;
-        // draw ribbon as thin rect with slight curve
-        confettiCtx.fillRect(-p.w/2,-p.h/2,p.w,p.h);
-        confettiCtx.restore();
-        // remove when off screen
-        if(p.y > confettiCanvas.height + 80) confettiParticles.splice(i,1);
-      }
-    }
+        document.getElementById('downloadJpg').addEventListener('click', () => {
+            const link = document.createElement('a');
+            link.href = cardCanvas.toDataURL('image/jpeg', 0.95);
+            link.download = `${(nameInput.value.trim()||'Ataa')}_wisuda_card.jpg`;
+            link.click();
+        });
 
-    let confettiTicker = null;
-    function startConfetti(){ if(confettiRunning) return; confettiRunning = true; confettiTicker = setInterval(()=>{ if(Math.random()<0.6) spawnParticle(); drawParticles(); }, 30); }
-    function stopConfetti(){ confettiRunning=false; clearInterval(confettiTicker); confettiCtx.clearRect(0,0,confettiCanvas.width,confettiCanvas.height); confettiParticles=[]; }
+        function roundRect(ctx, x, y, w, h, r) {
+            ctx.beginPath();
+            ctx.moveTo(x + r, y);
+            ctx.arcTo(x + w, y, x + w, y + h, r);
+            ctx.arcTo(x + w, y + h, x, y + h, r);
+            ctx.arcTo(x, y + h, x, y, r);
+            ctx.arcTo(x, y, x + w, y, r);
+            ctx.closePath();
+        }
+        function roundClip(ctx, x, y, w, h, r) {
+            ctx.save();
+            ctx.beginPath();
+            roundRect(ctx, x, y, w, h, r);
+            ctx.clip();
+        }
+        function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+            const words = text.split(' ');
+            let line = '';
+            for (let n = 0; n < words.length; n++) {
+                const testLine = line + words[n] + ' ';
+                const metrics = ctx.measureText(testLine);
+                const testWidth = metrics.width;
+                if (testWidth > maxWidth && n > 0) {
+                    ctx.fillText(line, x, y);
+                    line = words[n] + ' ';
+                    y += lineHeight;
+                } else {
+                    line = testLine;
+                }
+            }
+            ctx.fillText(line, x, y);
+        }
 
-    // ---------- small polish: auto-play prompt for audio (user must interact) ----------
-    // Play a short gentle built-in melody only if browser allows (many block autoplay) - we keep audio empty until user chooses.
-
-    // ---------- small helpers ----------
-    function preload(){ /* reserved for future */ }
-
-    // ---------- initial note ----------
-    // The page relies on user interaction to start audio (browsers disallow autoplay). Ask user to press Play.
-
-  </script>
+        // Confetti Ribbons
+        const confettiCanvas = document.getElementById('confetti');
+        const confettiCtx = confettiCanvas.getContext('2d');
+        let confettiParticles = [];
+        let confettiRunning = false;
+        function resizeConfetti() {
+            confettiCanvas.width = innerWidth;
+            confettiCanvas.height = innerHeight;
+        }
+        addEventListener('resize', resizeConfetti);
+        resizeConfetti();
+        function rand(min, max) {
+            return Math.random() * (max - min) + min
+        }
+        function spawnParticle() {
+            const w = rand(8, 22);
+            const h = rand(14, 36);
+            confettiParticles.push({
+                x: rand(0, confettiCanvas.width),
+                y: -50,
+                vx: rand(-0.6, 0.6),
+                vy: rand(1.2, 2.5),
+                r: rand(0, Math.PI * 2),
+                vr: rand(-0.04, 0.04),
+                w,
+                h,
+                color: ['#9b7adf', '#ff8fc0', '#bfe9ff', '#f9d7ff'][Math.floor(rand(0, 4))],
+                time: 0
+            });
+        }
+        function drawParticles() {
+            confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+            for (let i = confettiParticles.length - 1; i >= 0; i--) {
+                const p = confettiParticles[i];
+                p.time += 1;
+                p.x += p.vx;
+                p.y += p.vy;
+                p.r += p.vr;
+                confettiCtx.save();
+                confettiCtx.translate(p.x, p.y);
+                confettiCtx.rotate(p.r);
+                confettiCtx.fillStyle = p.color;
+                confettiCtx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+                confettiCtx.restore();
+                if (p.y > confettiCanvas.height + 80) confettiParticles.splice(i, 1);
+            }
+        }
+        let confettiTicker = null;
+        function startConfetti() {
+            if (confettiRunning) return;
+            confettiRunning = true;
+            confettiTicker = setInterval(() => {
+                if (Math.random() < 0.6) spawnParticle();
+                drawParticles();
+            }, 30);
+        }
+        function stopConfetti() {
+            confettiRunning = false;
+            clearInterval(confettiTicker);
+            confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+            confettiParticles = [];
+        }
+    </script>
 </body>
 </html>
