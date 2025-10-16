@@ -348,20 +348,20 @@
                     <div class="badge">A</div>
                 </div>
                 <div>
-                    <h1>Selamat Wisuda, Ataa</h1>
-                    <div class="muted">Kartu ucapan personal & interaktif</div>
+                    <h1>Hari ini bunga-bunga tersenyum untukmu, Ataa 🌷</h1>
+                    <div class="muted">Setiap langkahmu adalah puisi, dan wisuda ini — bait terindah dalam kisahmu.</div>
                 </div>
             </header>
 
             <main class="view landing" id="landing">
-                <p style="color:#5c3b77">Buat kartu ucapan untuk Ataa. Masukkan namamu dan klik "Lanjutkan" untuk melihat kejutannya.</p>
+                <p style="color:#5c3b77">Masukkan namamu dan klik "Lanjutkan"</p>
                 <div class="input-row">
-                    <input id="nameInput" type="text" placeholder="Tulis nama..." value="Ataa" />
+                    <input id="nameInput" type="text" placeholder="Tulis nama... />
                     <button class="btn" id="enterBtn">Lanjutkan</button>
                 </div>
                 <div class="landing-footer">
-                    <span>🎨 Tema: Ungu, Pink, Biru Muda</span>
-                    <span>📱 Didesain untuk HP & Desktop</span>
+                    <span>Special For You</span>
+                    <span>Tetap dan selalu mekar ya, see you!</span>
                 </div>
             </main>
 
@@ -397,7 +397,7 @@
                 </div>
                  <button id="backBtn" class="btn secondary" style="margin-top: 32px;">Kembali</button>
                 <footer>
-                    <small>Dibuat dengan ✨ oleh kamu.</small>
+                    <small>Abil, Yogyakarta, 16 Oct 2025</small>
                 </footer>
             </section>
         </div>
@@ -574,10 +574,11 @@
             ctx.font = '24px Poppins';
             wrapText(ctx, getShortPoem(name), textX, titleY + 70, uploadedImage ? w - textX - 80 : 600, 40);
             
-            ctx.fillStyle = 'rgba(90, 50, 120, 0.6)';
-            ctx.font = '18px Poppins';
+            ctx.fillStyle = 'rgba(120, 70, 160, 0.7)';
+            ctx.font = '20px "Great Vibes", cursive';
             ctx.textAlign = 'center';
-            ctx.fillText('✨ Selamat Atas Kelulusanmu ✨', w / 2, h - 50);
+            ctx.fillText('✨ Langit ikut tersenyum atas langkah barumu ✨', w / 2, h - 40);
+
         }
 
         document.getElementById('downloadJpg').addEventListener('click', () => {
@@ -628,35 +629,58 @@
         window.addEventListener('resize', resizeConfetti);
         
         function startConfetti() {
-            if (confettiRunning) return;
-            resizeConfetti();
-            confettiRunning = true;
-            const spawn = () => confettiParticles.push({
-                x: rand(0, confettiCanvas.width), y: -50,
-                vx: rand(-0.8, 0.8), vy: rand(1.2, 2.8),
-                r: rand(0, Math.PI * 2), vr: rand(-0.05, 0.05),
-                w: rand(8, 20), h: rand(14, 32),
-                color: ['#9b7adf', '#ff8fc0', '#bfe9ff', '#f9d7ff'][Math.floor(rand(0, 4))]
-            });
-            const draw = () => {
-                confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
-                for (let i = confettiParticles.length - 1; i >= 0; i--) {
-                    const p = confettiParticles[i];
-                    p.x += p.vx; p.y += p.vy; p.r += p.vr;
-                    confettiCtx.save();
-                    confettiCtx.translate(p.x, p.y);
-                    confettiCtx.rotate(p.r);
-                    confettiCtx.fillStyle = p.color;
-                    confettiCtx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
-                    confettiCtx.restore();
-                    if (p.y > confettiCanvas.height + 50) confettiParticles.splice(i, 1);
-                }
-            };
-            confettiTicker = setInterval(() => {
-                if (Math.random() < 0.5) spawn();
-                draw();
-            }, 1000 / 60);
+    if (confettiRunning) return;
+    resizeConfetti();
+    confettiRunning = true;
+    confettiParticles = [];
+
+    const softColors = [
+        'rgba(155, 122, 223, 0.35)', // soft purple
+        'rgba(255, 143, 192, 0.35)', // soft pink
+        'rgba(191, 233, 255, 0.35)', // light blue
+        'rgba(249, 215, 255, 0.35)'  // light lilac
+    ];
+
+    const spawn = () => confettiParticles.push({
+        x: rand(0, confettiCanvas.width),
+        y: rand(-50, -10),
+        vx: rand(-0.6, 0.6),
+        vy: rand(1, 2.2),
+        r: rand(0, Math.PI * 2),
+        vr: rand(-0.04, 0.04),
+        w: rand(8, 18),
+        h: rand(12, 26),
+        color: softColors[Math.floor(rand(0, softColors.length))]
+    });
+
+    const draw = () => {
+        confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+        for (let i = confettiParticles.length - 1; i >= 0; i--) {
+            const p = confettiParticles[i];
+            p.x += p.vx;
+            p.y += p.vy;
+            p.r += p.vr;
+
+            // --- Ubah posisi agar tidak menutupi teks ---
+            if (p.y > confettiCanvas.height * 0.9) continue; // batasi area bawah teks
+
+            confettiCtx.save();
+            confettiCtx.translate(p.x, p.y);
+            confettiCtx.rotate(p.r);
+            confettiCtx.fillStyle = p.color;
+            confettiCtx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+            confettiCtx.restore();
+
+            if (p.y > confettiCanvas.height + 50) confettiParticles.splice(i, 1);
         }
+    };
+
+    confettiTicker = setInterval(() => {
+        if (Math.random() < 0.4) spawn(); // lebih jarang spawn biar lembut
+        draw();
+    }, 1000 / 60);
+}
+
 
         function stopConfetti() {
             if (!confettiRunning) return;
@@ -671,3 +695,4 @@
     </script>
 </body>
 </html>
+
