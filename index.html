@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Selamat Wisuda, Ataa 🌸</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
     <style>
+        /* --- 1. Pengaturan Dasar & Variabel --- */
         :root {
             --pink: #ffbfd6;
             --soft-pink: #ffdced;
@@ -15,117 +18,133 @@
             --light-blue: #bfe9ff;
             --dark-purple: #5a2d6b;
             --text-color: #4a2f5a;
-            --card-bg: rgba(255, 255, 255, 0.95);
-            --glass: rgba(255, 255, 255, 0.3);
-            --radius: 18px;
+            --card-bg: rgba(255, 255, 255, 0.96);
+            --glass: rgba(255, 255, 255, 0.4);
+            --radius-lg: 24px;
+            --radius-md: 16px;
         }
 
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         html,
         body {
             height: 100%;
-            margin: 0;
-            font-family: 'Poppins', system-ui, Arial;
+            font-family: 'Poppins', system-ui, -apple-system, sans-serif;
             background: linear-gradient(180deg, var(--soft-pink), #f7f0ff 40%, #eef9ff 100%);
             -webkit-font-smoothing: antialiased;
-            scroll-behavior: smooth;
         }
 
-        .watercolor {
+        /* --- 2. Elemen Dekoratif (Latar Belakang & Confetti) --- */
+        .watercolor, #confetti {
             position: fixed;
             inset: 0;
             pointer-events: none;
-            z-index: 0;
+            z-index: -1;
         }
-
+        
+        #confetti {
+            z-index: 10;
+        }
+        
         .container {
             min-height: 100vh;
+            width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 16px;
             position: relative;
-            padding: 24px;
-            z-index: 2;
+            z-index: 5;
         }
-
+        
+        /* --- 3. Kartu Utama (Mobile First) --- */
         .card {
             width: 100%;
-            max-width: 980px;
+            max-width: 500px; /* Lebar maksimal di mobile */
             background: var(--card-bg);
-            border-radius: 28px;
-            box-shadow: 0 4px 15px rgba(142, 111, 183, 0.08), 0 10px 40px rgba(142, 111, 183, 0.12);
-            padding: 40px;
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 8px 32px rgba(120, 90, 150, 0.15);
+            padding: 24px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            overflow: hidden; /* Mencegah konten keluar dari radius */
+            position: relative;
         }
 
         header {
             display: flex;
-            gap: 20px;
+            gap: 16px;
             align-items: center;
-            margin-bottom: 16px;
+            margin-bottom: 24px;
         }
 
         .logo .badge {
-            width: 58px;
-            height: 58px;
-            border-radius: 16px;
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius-md);
             background: linear-gradient(135deg, var(--purple), var(--pink));
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-weight: 700;
             font-family: 'Great Vibes', cursive;
-            font-size: 28px;
+            font-size: 26px;
+            flex-shrink: 0;
         }
 
         h1 {
-            margin: 0;
-            font-size: 22px;
+            font-size: 20px;
             color: var(--dark-purple);
             font-weight: 600;
+            line-height: 1.3;
         }
 
+        .muted {
+            color: #6a4b7f;
+            font-size: 13px;
+        }
+
+        /* --- 4. Halaman (View) & Transisi --- */
         .view {
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
         
         .view.hidden {
             opacity: 0;
-            transform: translateY(10px);
+            transform: translateY(15px);
             pointer-events: none;
             position: absolute;
+            /* Pastikan elemen tersembunyi tidak bisa diakses */
+            top: 0; left: 0; right: 0; 
+            padding: inherit;
         }
 
+        /* --- 5. Halaman Landing & Input (Mobile First) --- */
         .landing {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 24px;
-            padding: 30px 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
-
+        
         .input-row {
             display: flex;
-            gap: 14px;
-            align-items: center;
+            flex-direction: column; /* Tombol di bawah input pada mobile */
+            gap: 12px;
         }
 
         input[type=text] {
-            flex: 1;
-            padding: 16px 18px;
-            border-radius: 14px;
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 12px;
             border: 1px solid rgba(142, 111, 183, 0.2);
             font-size: 16px;
-            background: rgba(240, 235, 255, 0.5);
+            background: rgba(245, 240, 255, 0.6);
             transition: all 0.3s ease;
             color: var(--dark-purple);
-        }
-        input[type=text]::placeholder {
-            color: rgba(90, 45, 107, 0.5);
         }
         input[type=text]:focus {
             outline: none;
@@ -136,123 +155,16 @@
         .btn {
             background: linear-gradient(90deg, var(--purple), var(--pink));
             color: white;
-            padding: 14px 24px;
-            border-radius: 14px;
+            padding: 14px 20px;
+            border-radius: 12px;
             border: 0;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(142, 111, 183, 0.2);
+            text-align: center;
         }
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 16px rgba(142, 111, 183, 0.3);
-        }
-
-        .muted {
-            color: #6a4b7f;
-            font-size: 14px;
-        }
-
-        .home {
-            display: flex;
-            padding: 20px;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .greeting {
-            display: flex;
-            gap: 24px;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .greeting h2 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 64px;
-            margin: 0;
-            color: var(--purple);
-            font-weight: normal;
-            letter-spacing: 1px;
-        }
-
-        .poem {
-            max-width: 760px;
-            color: var(--text-color);
-            font-size: 19px;
-            line-height: 1.8;
-            font-weight: 300;
-        }
-
-        .controls {
-            display: flex;
-            gap: 16px;
-            align-items: center;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        
-        .audio-controls, .uploader {
-            background: var(--glass);
-            padding: 12px 16px;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-        }
-
-        .uploader {
-            display: flex;
-            gap: 16px;
-            align-items: center;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 18px;
-        }
-        
-        .thumb {
-            width: 160px;
-            height: 160px;
-            border-radius: var(--radius);
-            overflow: hidden;
-            background: linear-gradient(180deg, var(--light-blue), var(--soft-pink));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px dashed rgba(142, 111, 183, 0.3);
-            transition: transform 0.3s ease;
-        }
-        .thumb:hover {
-            transform: scale(1.05);
-        }
-        .thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .card-preview {
-            margin-top: 18px;
-            display: flex;
-            gap: 18px;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .download-btn {
-            background: linear-gradient(90deg, #ff8fc0, #9b7adf);
-            border: 0;
-            padding: 14px 24px;
-            border-radius: 14px;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(142, 111, 183, 0.2);
-        }
-        .download-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 16px rgba(142, 111, 183, 0.3);
         }
@@ -265,47 +177,165 @@
         }
         .btn.secondary:hover {
             background: rgba(142, 111, 183, 0.08);
-            border-color: rgba(120, 80, 140, 0.3);
             transform: translateY(-2px);
             box-shadow: none;
         }
 
-        footer {
+        .landing-footer {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-top: 16px;
+        }
+
+        /* --- 6. Halaman Home (Mobile First) --- */
+        .home {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .greeting h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 48px; /* Ukuran lebih pas untuk mobile */
+            margin-bottom: 16px;
+            color: var(--purple);
+            font-weight: normal;
+        }
+        
+        .poem {
+            color: var(--text-color);
+            font-size: 16px;
+            line-height: 1.7;
+            font-weight: 300;
+            margin-bottom: 24px;
+        }
+
+        .controls, .uploader, .card-preview {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
             margin-top: 24px;
+            background: var(--glass);
+            padding: 16px;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .audio-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .thumb {
+            width: 120px;
+            height: 120px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: linear-gradient(180deg, var(--light-blue), var(--soft-pink));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed rgba(142, 111, 183, 0.3);
+            font-size: 14px;
+            color: var(--dark-purple);
+        }
+        .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        #cardCanvas {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(100, 60, 120, 0.1);
+        }
+        
+        .download-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .download-btn {
+            background: linear-gradient(90deg, #ff8fc0, #9b7adf);
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 0;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        footer {
+            margin-top: 32px;
             text-align: center;
             color: #6a4b7f;
+            font-size: 12px;
         }
 
-        @media (max-width: 600px) {
-            .card { padding: 24px; }
-            .greeting h2 { font-size: 48px; }
-            .poem { font-size: 17px; }
-            .thumb { width: 120px; height: 120px; }
+        /* --- 7. Tablet & Layar Menengah (Breakpoint 1) --- */
+        @media (min-width: 768px) {
+            .card {
+                max-width: 980px; /* Lebar maksimal di tablet/desktop */
+                padding: 40px;
+            }
+
+            .input-row {
+                flex-direction: row; /* Input dan tombol sejajar */
+            }
+
+            .greeting h2 {
+                font-size: 64px;
+            }
+            .poem {
+                font-size: 19px;
+            }
+            
+            .controls-wrapper {
+                display: flex;
+                flex-direction: row;
+                gap: 16px;
+                align-items: stretch; /* Membuat box sama tinggi */
+            }
+
+            .controls, .uploader {
+                margin-top: 0;
+                width: auto;
+                flex: 1;
+            }
+            
+            .card-preview {
+                margin-top: 32px;
+            }
+            
+            .download-actions {
+                flex-direction: row;
+                justify-content: center;
+            }
         }
 
-        #confetti {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 1;
-        }
     </style>
 </head>
 <body>
 
     <svg class="watercolor" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
-        <defs>
-            <linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#ffe0f4"/><stop offset="1" stop-color="#efedff"/></linearGradient>
-        </defs>
-        <g opacity="0.35">
+        <g opacity="0.4">
             <ellipse cx="100" cy="120" rx="220" ry="120" fill="#f9e6ff"/>
             <ellipse cx="1100" cy="680" rx="420" ry="220" fill="#e7f6ff"/>
             <ellipse cx="950" cy="120" rx="260" ry="160" fill="#ffeaf2"/>
-        </g>
-        <g opacity="0.28">
-            <circle cx="160" cy="220" r="120" fill="#eed4ff"/>
             <circle cx="360" cy="80" r="90" fill="#ffd9ec"/>
-            <circle cx="860" cy="420" r="160" fill="#dfe9ff"/>
         </g>
     </svg>
 
@@ -316,22 +346,22 @@
             <header>
                 <div class="logo">
                     <div class="badge">A</div>
-                    <div>
-                        <h1>Selamat Wisuda, Ataa</h1>
-                        <div class="muted">Sebuah halaman ucapan personal yang manis & dreamy</div>
-                    </div>
+                </div>
+                <div>
+                    <h1>Selamat Wisuda, Ataa</h1>
+                    <div class="muted">Kartu ucapan personal & interaktif</div>
                 </div>
             </header>
 
             <main class="view landing" id="landing">
-                <p style="font-size:16px;color:#5c3b77">Halo! Buat halaman ucapan personal untuk Ataa. Masukkan nama (atau biarkan 'Ataa') dan klik masuk.</p>
+                <p style="color:#5c3b77">Buat kartu ucapan untuk Ataa. Masukkan namamu dan klik "Lanjutkan" untuk melihat kejutannya.</p>
                 <div class="input-row">
-                    <input id="nameInput" type="text" placeholder="Tulis nama... (contoh: Ataa)" value="Ataa" />
-                    <button class="btn" id="enterBtn">Masuk</button>
+                    <input id="nameInput" type="text" placeholder="Tulis nama..." value="Ataa" />
+                    <button class="btn" id="enterBtn">Lanjutkan</button>
                 </div>
-                <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
-                    <div class="muted">Warna tema: Ungu • Pink • Biru muda • Watercolor • Bunga</div>
-                    <div style="margin-left:auto" class="muted">Durasi preview 30 detik • Responsif HP</div>
+                <div class="landing-footer">
+                    <span>🎨 Tema: Ungu, Pink, Biru Muda</span>
+                    <span>📱 Didesain untuk HP & Desktop</span>
                 </div>
             </main>
 
@@ -339,31 +369,35 @@
                 <div class="greeting">
                     <h2 id="heroName">Untuk: Ataa</h2>
                     <div class="poem" id="poem"></div>
+                </div>
+                
+                <div class="controls-wrapper">
                     <div class="controls">
+                        <label class="muted">Pilih lagu latar (opsional)</label>
                         <div class="audio-controls">
-                            <button id="playAudio" class="btn" style="padding:8px 12px;">Play</button>
-                            <label style="font-size:13px;color:#5b3b7a">Pilih lagu (opsional)</label>
-                            <input id="audioFile" type="file" accept="audio/*" style="display:inline-block" />
-                        </div>
-                        <div>
-                            <button id="backBtn" class="btn secondary">Kembali</button>
+                            <input id="audioFile" type="file" accept="audio/*" />
+                            <button id="playAudio" class="btn" style="padding:8px 12px; width: 100px;">Play</button>
                         </div>
                     </div>
+
                     <div class="uploader">
-                        <label class="muted">Unggah foto untuk dibuat jadi kartu ucapan:</label>
+                        <label class="muted">Unggah foto</label>
                         <input id="photoFile" type="file" accept="image/*" />
                         <div class="thumb" id="thumb">Preview</div>
                     </div>
-                    <div class="card-preview">
-                        <canvas id="cardCanvas" width="1200" height="700" style="max-width:100%;border-radius:12px;box-shadow:0 10px 30px rgba(100,60,120,0.08);"></canvas>
-                        <div style="display:flex;gap:10px;align-items:center">
-                            <button id="downloadJpg" class="download-btn">Download sebagai JPG</button>
-                            <button id="resetPic" class="btn secondary">Reset Foto</button>
-                        </div>
+                </div>
+
+                <div class="card-preview">
+                     <label class="muted">Preview Kartu Ucapan</label>
+                    <canvas id="cardCanvas" width="1200" height="700"></canvas>
+                    <div class="download-actions">
+                        <button id="downloadJpg" class="download-btn">Unduh Kartu (JPG)</button>
+                        <button id="resetPic" class="btn secondary">Reset Foto</button>
                     </div>
                 </div>
+                 <button id="backBtn" class="btn secondary" style="margin-top: 32px;">Kembali</button>
                 <footer>
-                    <small>Made with love ✨ — Customize colors, text, atau musik lewat kontrol di atas.</small>
+                    <small>Dibuat dengan ✨ oleh kamu.</small>
                 </footer>
             </section>
         </div>
@@ -372,7 +406,7 @@
     <audio id="bgAudio" loop></audio>
 
     <script>
-        // DOM Elements
+        // --- 1. Seleksi Elemen DOM ---
         const landing = document.getElementById('landing');
         const home = document.getElementById('home');
         const nameInput = document.getElementById('nameInput');
@@ -388,96 +422,112 @@
         const ctx = cardCanvas.getContext('2d');
         let uploadedImage = null;
 
-        // Default poem text
-        const poemTemplate = name => `Selamat wisuda, ${name} 💐\n\nHari ini bukan sekadar akhir perjalanan,\ntapi awal dari mimpi-mimpi yang mulai terbang lebih tinggi.\n\nLangit tersenyum melihat langkahmu,\ndan setiap bunga bermekaran memanggil namamu dengan bangga.\n\nSemoga setiap langkahmu selalu dihiasi keberanian,\ncinta, dan kebahagiaan yang tak berujung.\n\nDunia menunggu sinar terbaik darimu,\ndan hari ini — semuanya dimulai dari senyum cantikmu. 💫`;
+        // --- 2. Teks & Template ---
+        const poemTemplate = name => `Selamat wisuda, ${name}! 💐\n\nHari ini bukan akhir perjalanan, tapi awal dari mimpi yang terbang tinggi.\n\nSemoga setiap langkahmu dihiasi keberanian, cinta, dan kebahagiaan.\n\nDunia menunggu sinarmu, dan hari ini semuanya dimulai dari senyummu. ✨`;
+        const getShortPoem = name => `Hari ini bukan akhir, tapi awal dari mimpi yang mulai terbang. Langit tersenyum melihat langkahmu, ${name}. Semoga langkahmu selalu dihiasi keberanian dan cinta.`;
 
-        // Routing with smooth transitions
-        function showHome(name) {
-            landing.classList.add('hidden');
+        // --- 3. Navigasi & Transisi Halaman ---
+        function switchView(show, hide) {
+            hide.classList.add('hidden');
             setTimeout(() => {
-                landing.style.display = 'none';
-                home.style.display = 'flex';
-                setTimeout(() => {
-                    home.classList.remove('hidden');
-                }, 50);
-            }, 600);
-            heroName.textContent = `Untuk: ${name}`;
-            typePoem(poemTemplate(name));
-            startConfetti();
-            drawCard(name);
+                hide.style.display = 'none';
+                show.style.display = 'flex';
+                setTimeout(() => show.classList.remove('hidden'), 50);
+            }, 500); // Cocokkan dengan durasi transisi di CSS
         }
 
         enterBtn.addEventListener('click', () => {
             const name = nameInput.value.trim() || 'Ataa';
-            showHome(name);
+            switchView(home, landing);
+            heroName.textContent = `Untuk: ${name}`;
+            typePoem(poemTemplate(name));
+            startConfetti();
+            drawCard(name);
         });
 
         document.getElementById('backBtn').addEventListener('click', () => {
-            home.classList.add('hidden');
-            setTimeout(() => {
-                home.style.display = 'none';
-                landing.style.display = 'grid';
-                setTimeout(() => {
-                    landing.classList.remove('hidden');
-                }, 50);
-            }, 600);
+            switchView(landing, home);
             stopConfetti();
-            bgAudio.pause();
-            playAudio.textContent = 'Play';
+            if (!bgAudio.paused) {
+                bgAudio.pause();
+                playAudio.textContent = 'Play';
+            }
         });
 
-        // Typing effect for the poem
+        // Efek mengetik
         function typePoem(text) {
             poemEl.textContent = '';
             let i = 0;
-            const speed = 16;
+            const speed = 20;
             function step() {
                 if (i < text.length) {
-                    poemEl.textContent += text.charAt(i);
-                    i++;
+                    poemEl.textContent += text.charAt(i++);
                     setTimeout(step, speed);
                 }
             }
             step();
         }
 
-        // Audio handling
+        // --- 4. Penanganan Audio ---
         audioFile.addEventListener('change', (e) => {
             const f = e.target.files[0];
             if (!f) return;
-            const url = URL.createObjectURL(f);
-            bgAudio.src = url;
-            bgAudio.play().catch(() => {});
+            bgAudio.src = URL.createObjectURL(f);
+            bgAudio.play().catch(() => playAudio.textContent = 'Play');
             playAudio.textContent = 'Pause';
         });
 
-        playAudio.addEventListener('click', async () => {
+        playAudio.addEventListener('click', () => {
+            if (!bgAudio.src) return;
             if (bgAudio.paused) {
-                try {
-                    await bgAudio.play();
-                    playAudio.textContent = 'Pause';
-                } catch (e) {
-                    console.log('Autoplay blocked');
-                }
+                bgAudio.play().then(() => playAudio.textContent = 'Pause');
             } else {
                 bgAudio.pause();
                 playAudio.textContent = 'Play';
             }
         });
 
-        // Photo upload & card canvas drawing
+        // --- 5. Penanganan Gambar & Canvas ---
+        photoFile.addEventListener('change', (e) => {
+            const f = e.target.files[0];
+            if (!f) return;
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+                const img = new Image();
+                img.onload = () => {
+                    uploadedImage = img;
+                    thumb.innerHTML = `<img src="${ev.target.result}" alt="Preview">`;
+                    drawCard(nameInput.value.trim() || 'Ataa');
+                };
+                img.src = ev.target.result;
+            };
+            reader.readAsDataURL(f);
+        });
+        
+        document.getElementById('resetPic').addEventListener('click', () => {
+            uploadedImage = null;
+            thumb.innerHTML = 'Preview';
+            photoFile.value = '';
+            drawCard(nameInput.value.trim() || 'Ataa');
+        });
+
+        nameInput.addEventListener('input', () => {
+            drawCard(nameInput.value.trim() || 'Ataa');
+        });
+
         function drawCard(name) {
             const w = cardCanvas.width;
             const h = cardCanvas.height;
             ctx.clearRect(0, 0, w, h);
 
+            // Latar belakang
             const grad = ctx.createLinearGradient(0, 0, w, h);
             grad.addColorStop(0, '#fff9ff');
-            grad.addColorStop(0.5, '#f8f4ff');
             grad.addColorStop(1, '#f4faff');
             ctx.fillStyle = grad;
             ctx.fillRect(0, 0, w, h);
-
+            
+            // Aksen watercolor
             ctx.save();
             ctx.globalAlpha = 0.5;
             ctx.fillStyle = 'rgba(155,122,223,0.18)';
@@ -490,22 +540,15 @@
             ctx.fill();
             ctx.restore();
 
-            let textX = w / 2;
-            let textAlign = 'center';
+            let textX = w / 2, textAlign = 'center';
 
             if (uploadedImage) {
-                const imgMaxW = w * 0.4;
-                const imgMaxH = h * 0.75;
-                let imgW = uploadedImage.width;
-                let imgH = uploadedImage.height;
-
-                if (imgW > imgMaxW || imgH > imgMaxH) {
-                    const ratio = Math.min(imgMaxW / imgW, imgMaxH / imgH);
-                    imgW *= ratio;
-                    imgH *= ratio;
-                }
-                const imgX = 100;
-                const imgY = (h - imgH) / 2;
+                const imgMaxW = w * 0.4, imgMaxH = h * 0.75;
+                let imgW = uploadedImage.width, imgH = uploadedImage.height;
+                const ratio = Math.min(imgMaxW / imgW, imgMaxH / imgH);
+                imgW *= ratio;
+                imgH *= ratio;
+                const imgX = 100, imgY = (h - imgH) / 2;
                 
                 ctx.save();
                 ctx.shadowColor = 'rgba(142, 111, 183, 0.2)';
@@ -520,16 +563,16 @@
                 textAlign = 'left';
             }
 
+            // Teks
             ctx.textAlign = textAlign;
-            ctx.fillStyle = '#5a2d6b'; // var(--dark-purple)
+            ctx.fillStyle = '#5a2d6b';
             ctx.font = `64px "Great Vibes", cursive`;
             const titleY = uploadedImage ? h * 0.35 : h * 0.4;
             ctx.fillText(`Untuk ${name},`, textX, titleY);
 
-            ctx.fillStyle = '#4a2f5a'; // var(--text-color)
+            ctx.fillStyle = '#4a2f5a';
             ctx.font = '24px Poppins';
-            const poemMaxWidth = uploadedImage ? w - textX - 80 : 600;
-            wrapText(ctx, getShortPoem(name), textX, titleY + 70, poemMaxWidth, 40);
+            wrapText(ctx, getShortPoem(name), textX, titleY + 70, uploadedImage ? w - textX - 80 : 600, 40);
             
             ctx.fillStyle = 'rgba(90, 50, 120, 0.6)';
             ctx.font = '18px Poppins';
@@ -537,50 +580,16 @@
             ctx.fillText('✨ Selamat Atas Kelulusanmu ✨', w / 2, h - 50);
         }
 
-        function getShortPoem(name) {
-            return `Hari ini bukan akhir, tapi awal dari mimpi yang mulai terbang. Langit tersenyum melihat langkahmu, ${name}. Semoga langkahmu selalu dihiasi keberanian dan cinta.`;
-        }
-
-        drawCard('Ataa');
-
-        photoFile.addEventListener('change', (e) => {
-            const f = e.target.files[0];
-            if (!f) return;
-            const reader = new FileReader();
-            reader.onload = function(ev) {
-                const img = new Image();
-                img.onload = () => {
-                    uploadedImage = img;
-                    thumb.innerHTML = '';
-                    const timg = document.createElement('img');
-                    timg.src = ev.target.result;
-                    thumb.appendChild(timg);
-                    drawCard(nameInput.value.trim() || 'Ataa');
-                };
-                img.src = ev.target.result;
-            };
-            reader.readAsDataURL(f);
-        });
-        
-        nameInput.addEventListener('input', () => {
-            drawCard(nameInput.value.trim() || 'Ataa');
-        });
-
-        document.getElementById('resetPic').addEventListener('click', () => {
-            uploadedImage = null;
-            thumb.innerHTML = 'Preview';
-            photoFile.value = ''; // Reset input file
-            drawCard(nameInput.value.trim() || 'Ataa');
-        });
-
         document.getElementById('downloadJpg').addEventListener('click', () => {
             const link = document.createElement('a');
             link.href = cardCanvas.toDataURL('image/jpeg', 0.95);
-            link.download = `${(nameInput.value.trim()||'Ataa')}_wisuda_card.jpg`;
+            link.download = `kartu-wisuda-${(nameInput.value.trim()||'Ataa')}.jpg`;
             link.click();
         });
 
-        function roundRect(ctx, x, y, w, h, r) {
+        // --- 6. Utilitas Canvas ---
+        function roundClip(ctx, x, y, w, h, r) {
+            ctx.save();
             ctx.beginPath();
             ctx.moveTo(x + r, y);
             ctx.arcTo(x + w, y, x + w, y + h, r);
@@ -588,11 +597,6 @@
             ctx.arcTo(x, y + h, x, y, r);
             ctx.arcTo(x, y, x + w, y, r);
             ctx.closePath();
-        }
-        function roundClip(ctx, x, y, w, h, r) {
-            ctx.save();
-            ctx.beginPath();
-            roundRect(ctx, x, y, w, h, r);
             ctx.clip();
         }
         function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
@@ -600,9 +604,7 @@
             let line = '';
             for (let n = 0; n < words.length; n++) {
                 const testLine = line + words[n] + ' ';
-                const metrics = ctx.measureText(testLine);
-                const testWidth = metrics.width;
-                if (testWidth > maxWidth && n > 0) {
+                if (ctx.measureText(testLine).width > maxWidth && n > 0) {
                     ctx.fillText(line, x, y);
                     line = words[n] + ' ';
                     y += lineHeight;
@@ -613,68 +615,59 @@
             ctx.fillText(line, x, y);
         }
 
-        // Confetti Ribbons
+        // --- 7. Animasi Confetti ---
         const confettiCanvas = document.getElementById('confetti');
         const confettiCtx = confettiCanvas.getContext('2d');
-        let confettiParticles = [];
-        let confettiRunning = false;
+        let confettiParticles = [], confettiRunning = false, confettiTicker = null;
+        const rand = (min, max) => Math.random() * (max - min) + min;
+
         function resizeConfetti() {
-            confettiCanvas.width = innerWidth;
-            confettiCanvas.height = innerHeight;
+            confettiCanvas.width = window.innerWidth;
+            confettiCanvas.height = window.innerHeight;
         }
-        addEventListener('resize', resizeConfetti);
-        resizeConfetti();
-        function rand(min, max) {
-            return Math.random() * (max - min) + min
-        }
-        function spawnParticle() {
-            const w = rand(8, 22);
-            const h = rand(14, 36);
-            confettiParticles.push({
-                x: rand(0, confettiCanvas.width),
-                y: -50,
-                vx: rand(-0.6, 0.6),
-                vy: rand(1.2, 2.5),
-                r: rand(0, Math.PI * 2),
-                vr: rand(-0.04, 0.04),
-                w,
-                h,
-                color: ['#9b7adf', '#ff8fc0', '#bfe9ff', '#f9d7ff'][Math.floor(rand(0, 4))],
-                time: 0
-            });
-        }
-        function drawParticles() {
-            confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
-            for (let i = confettiParticles.length - 1; i >= 0; i--) {
-                const p = confettiParticles[i];
-                p.time += 1;
-                p.x += p.vx;
-                p.y += p.vy;
-                p.r += p.vr;
-                confettiCtx.save();
-                confettiCtx.translate(p.x, p.y);
-                confettiCtx.rotate(p.r);
-                confettiCtx.fillStyle = p.color;
-                confettiCtx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
-                confettiCtx.restore();
-                if (p.y > confettiCanvas.height + 80) confettiParticles.splice(i, 1);
-            }
-        }
-        let confettiTicker = null;
+        window.addEventListener('resize', resizeConfetti);
+        
         function startConfetti() {
             if (confettiRunning) return;
+            resizeConfetti();
             confettiRunning = true;
+            const spawn = () => confettiParticles.push({
+                x: rand(0, confettiCanvas.width), y: -50,
+                vx: rand(-0.8, 0.8), vy: rand(1.2, 2.8),
+                r: rand(0, Math.PI * 2), vr: rand(-0.05, 0.05),
+                w: rand(8, 20), h: rand(14, 32),
+                color: ['#9b7adf', '#ff8fc0', '#bfe9ff', '#f9d7ff'][Math.floor(rand(0, 4))]
+            });
+            const draw = () => {
+                confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+                for (let i = confettiParticles.length - 1; i >= 0; i--) {
+                    const p = confettiParticles[i];
+                    p.x += p.vx; p.y += p.vy; p.r += p.vr;
+                    confettiCtx.save();
+                    confettiCtx.translate(p.x, p.y);
+                    confettiCtx.rotate(p.r);
+                    confettiCtx.fillStyle = p.color;
+                    confettiCtx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+                    confettiCtx.restore();
+                    if (p.y > confettiCanvas.height + 50) confettiParticles.splice(i, 1);
+                }
+            };
             confettiTicker = setInterval(() => {
-                if (Math.random() < 0.6) spawnParticle();
-                drawParticles();
-            }, 30);
+                if (Math.random() < 0.5) spawn();
+                draw();
+            }, 1000 / 60);
         }
+
         function stopConfetti() {
+            if (!confettiRunning) return;
             confettiRunning = false;
             clearInterval(confettiTicker);
-            confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
             confettiParticles = [];
+            confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
         }
+
+        // --- Inisialisasi ---
+        drawCard('Ataa');
     </script>
 </body>
 </html>
